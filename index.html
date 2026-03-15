@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alem | Aqlli Monitoring Tizimi</title>
-    <link rel="shortcut icon" href="./internet.png" type="image/x-icon">
+    <title>Alem | Enterprise Monitoring</title>
     
     <!-- Premium Shriftlar va Ikonkalar -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -35,10 +34,9 @@
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .animate { animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-        /* LOADING INDICATOR */
         #page-loader { position: fixed; inset: 0; background: white; z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         header {
             height: 75px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(15px);
@@ -50,7 +48,6 @@
 
         .app-container { display: grid; grid-template-columns: 320px 1fr; gap: 30px; padding: 30px; max-width: 1600px; margin: 0 auto; }
 
-        /* SIDEBAR */
         .sidebar { background: var(--card); border-radius: 24px; padding: 25px; box-shadow: var(--shadow); height: fit-content; position: sticky; top: 105px; transition: 0.4s; }
         .sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: none; z-index: 1500; backdrop-filter: blur(4px); }
         .sidebar-label { font-size: 0.7rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin: 20px 0 10px 0; letter-spacing: 1px; }
@@ -65,21 +62,17 @@
         .status-live { background: var(--success); box-shadow: 0 0 8px var(--success); }
         .status-off { background: #d1d5db; }
 
-        /* DEBTORS */
         .debtors-box { background: #fff1f2; border-radius: 18px; padding: 15px; margin-top: 20px; border: 1px solid #ffe4e6; }
         .debtor-mini { font-size: 0.8rem; margin-bottom: 8px; color: var(--danger); font-weight: 600; display: flex; justify-content: space-between; }
 
-        /* CARDS */
         .card { background: var(--card); border-radius: 28px; padding: 30px; box-shadow: var(--shadow); margin-bottom: 25px; }
         .card-title { font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
 
-        /* TABLE */
         .table-wrap { overflow-x: auto; margin-top: 15px; }
         table { width: 100%; border-collapse: collapse; min-width: 600px; }
         th { text-align: left; padding: 15px; color: var(--text-muted); font-size: 0.85rem; border-bottom: 2px solid #f3f4f6; }
         td { padding: 20px 15px; border-bottom: 1px solid #f9fafb; }
 
-        /* SWITCH */
         .switch { position: relative; display: inline-block; width: 46px; height: 24px; }
         .switch input { opacity: 0; width: 0; height: 0; }
         .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #d1d5db; transition: .4s; border-radius: 34px; }
@@ -87,7 +80,6 @@
         input:checked + .slider { background-color: var(--success); }
         input:checked + .slider:before { transform: translateX(22px); }
 
-        /* TIMELINE */
         .timeline { display: flex; gap: 15px; overflow-x: auto; padding: 10px 0; scrollbar-width: none; }
         .date-node {
             min-width: 95px; height: 100px; background: white; border-radius: 22px;
@@ -98,9 +90,8 @@
 
         .btn { padding: 12px 24px; border-radius: 16px; border: none; font-weight: 700; cursor: pointer; transition: 0.3s; display: inline-flex; align-items: center; gap: 10px; }
         .btn-primary { background: var(--primary); color: white; }
-        .btn-success { background: var(--success); color: white; width: 100%; justify-content: center; margin-top: 25px; }
+        .btn-success { background: var(--success); color: white; width: 100%; justify-content: center; margin-top: 25px; box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2); }
 
-        /* MODAL */
         .modal { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
         .modal-content { background: white; width: 95%; max-width: 750px; border-radius: 32px; padding: 35px; animation: slideUp 0.4s ease; overflow-y: auto; max-height: 90vh; }
 
@@ -128,13 +119,12 @@
 <header>
     <div style="display: flex; align-items: center; gap: 15px;">
         <i class="fas fa-bars menu-btn" onclick="toggleMenu()"></i>
-        <div class="logo"><i class="fas fa-globe"></i>Alem Monitoring</div>
+        <div class="logo"><i class="fas fa-globe"></i> ALEM<span>.uz</span></div>
     </div>
     <div id="topDateLabel" style="font-weight: 700; color: var(--text-muted); font-size: 0.85rem;"></div>
 </header>
 
 <div class="app-container">
-    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
         <p class="sidebar-label">Guruhlar</p>
         <div id="groupList"></div>
@@ -149,9 +139,8 @@
     </aside>
 
     <main>
-        <!-- REJA -->
         <section class="card animate">
-            <h3 class="card-title"><i class="fas fa-calendar-check" style="color:var(--primary)"></i> Bugungi Jadval</h3>
+            <h3 class="card-title"><i class="fas fa-calendar-check" style="color:var(--primary)"></i> Bugungi Reja</h3>
             <div id="scheduleStatus" style="margin-top: 10px;"></div>
             
             <p class="sidebar-label" style="margin-top: 25px;">Shaxsiy Eslatmalar</p>
@@ -162,14 +151,13 @@
             </div>
         </section>
 
-        <!-- MONITORING -->
         <section class="card animate" id="monArea" style="display:none;">
             <div class="card-header">
                 <div>
                     <h2 id="activeGName" style="font-weight: 800; margin-bottom: 5px;">Guruh</h2>
                     <p id="lessonTimeInfo" style="font-size: 0.8rem; color: var(--text-muted);"></p>
                 </div>
-                <div style="color:var(--success); font-weight:800; font-size:0.75rem;"><i class="fas fa-sync"></i> LIVE SYNC ON</div>
+                <div style="color:var(--success); font-weight:800; font-size:0.75rem;"><i class="fas fa-sync"></i> LIVE CLOUD SYNC</div>
             </div>
             <div class="table-wrap">
                 <table>
@@ -177,13 +165,12 @@
                     <tbody id="studentBody"></tbody>
                 </table>
             </div>
-            <button class="btn btn-success" id="saveBtn" onclick="archiveDay()"><i class="fas fa-box-archive"></i> Darsni Yakunlash & Arxivlash</button>
+            <button class="btn btn-success" id="saveBtn" onclick="askLessonNumber()"><i class="fas fa-box-archive"></i> Darsni Yakunlash & Arxivlash</button>
         </section>
 
-        <!-- ARXIV -->
         <section class="card animate">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; flex-wrap:wrap; gap:15px;">
-                <h3 class="card-title" style="margin:0;"><i class="fas fa-history" style="color:var(--primary)"></i> Darslar Tarixi</h3>
+                <h3 class="card-title" style="margin:0;"><i class="fas fa-history" style="color:var(--primary)"></i> Arxiv Tarixi</h3>
                 <div style="display:flex; gap:10px;">
                     <button class="btn" style="background:var(--danger); color:white; font-size:0.75rem;" onclick="generateTotalArchivePDF()"><i class="fas fa-file-pdf"></i> Jami Tarix PDF</button>
                     <button class="btn" style="background:#16a34a; color:white; font-size:0.75rem;" onclick="exportExcel()"><i class="fas fa-file-excel"></i> Excel Export</button>
@@ -194,7 +181,6 @@
     </main>
 </div>
 
-<!-- Modal -->
 <div class="modal" id="modal" onclick="closeModal(event)">
     <div class="modal-content">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
@@ -207,16 +193,15 @@
 
 <script>
     let GROUPS = JSON.parse(localStorage.getItem('alem_base_groups')) || {}; 
-    let archiveDB = JSON.parse(localStorage.getItem('alem_archive_v4')) || {};
-    let liveCache = JSON.parse(localStorage.getItem('alem_live_v4')) || {};
-    let myTodos = JSON.parse(localStorage.getItem('alem_todos_v4')) || [];
+    let archiveDB = JSON.parse(localStorage.getItem('alem_archive_v6')) || {};
+    let liveCache = JSON.parse(localStorage.getItem('alem_live_v6')) || {};
+    let myTodos = JSON.parse(localStorage.getItem('alem_todos_v6')) || [];
     
     let currentGId = null;
     const now = new Date();
     const todayNum = now.getDay(); 
     const todayStr = now.toISOString().split('T')[0];
 
-    // TIZIMNI ISHGA TUSHIRISH
     async function bootstrap() {
         try {
             const res = await fetch('students.json');
@@ -225,34 +210,23 @@
                 GROUPS = freshData;
                 localStorage.setItem('alem_base_groups', JSON.stringify(GROUPS));
             }
-        } catch (e) {
-            console.log("students.json o'qilmadi, LocalStoredan foydalaniladi.");
-        }
+        } catch (e) { console.log("JSON yuklanmadi, keshdan o'qiladi."); }
 
         if (Object.keys(GROUPS).length === 0) {
-            document.getElementById('page-loader').innerHTML = `
-                <div style="text-align:center; padding:20px;">
-                    <i class="fas fa-exclamation-triangle fa-3x" style="color:var(--danger);"></i>
-                    <h3 style="margin-top:15px;">Ma'lumot topilmadi!</h3>
-                    <p>Iltimos, students.json faylini tekshiring va sahifani yangilang.</p>
-                </div>`;
+            document.getElementById('page-loader').innerHTML = `<h3>Xato: Ma'lumotlar topilmadi!</h3>`;
             return;
         }
 
         checkAndResetDaily();
         initUI();
-        
-        // Loaderni yopish
-        setTimeout(() => {
-            document.getElementById('page-loader').style.display = 'none';
-        }, 500);
+        setTimeout(() => { document.getElementById('page-loader').style.display = 'none'; }, 500);
     }
 
     function checkAndResetDaily() {
         const lastSync = localStorage.getItem('alem_last_sync_date');
         if (lastSync !== todayStr) {
             liveCache = {};
-            localStorage.setItem('alem_live_v4', JSON.stringify(liveCache));
+            localStorage.setItem('alem_live_v6', JSON.stringify(liveCache));
             localStorage.setItem('alem_last_sync_date', todayStr);
         }
     }
@@ -273,15 +247,9 @@
 
     function renderScheduleInfo() {
         const statusArea = document.getElementById('scheduleStatus');
-        let activeToday = [];
-        Object.keys(GROUPS).forEach(id => {
-            if(GROUPS[id].days.includes(todayNum)) activeToday.push(id);
-        });
-
+        let activeToday = Object.keys(GROUPS).filter(id => GROUPS[id].days.includes(todayNum));
         if(activeToday.length > 0) {
-            statusArea.innerHTML = `<div style="background:#f0fdf4; padding:15px; border-radius:15px; border-left:5px solid var(--success);">
-                <p style="font-weight:700; color:var(--success);">Bugun ${activeToday.join(', ')} guruhlarida dars bor.</p>
-            </div>`;
+            statusArea.innerHTML = `<div style="background:#f0fdf4; padding:15px; border-radius:15px; border-left:5px solid var(--success);"><p style="font-weight:700; color:var(--success);">Bugun ${activeToday.join(', ')} guruhlarida dars bor.</p></div>`;
         } else {
             statusArea.innerHTML = `<p style="color:var(--text-muted);">Bugun rasmiy darslar yo'q.</p>`;
         }
@@ -300,7 +268,7 @@
                     </div>
                     <span style="font-size:0.75rem; opacity:0.8;">${GROUPS[id].time}</span>
                     <p style="font-size:0.6rem; margin-top:5px; opacity:0.8;">
-                        ${isArchivedToday ? '<i class="fas fa-check-circle"></i> Saqlangan' : (isLessonToday ? 'Dars kuni' : 'Navbatdan tashqari')}
+                        ${isArchivedToday ? '<i class="fas fa-check-circle"></i> ' + archiveDB[todayStr][id].lessonNum : (isLessonToday ? 'Dars kuni' : 'Navbatdan tashqari')}
                     </p>
                 </div>`;
         }).join('');
@@ -310,11 +278,9 @@
         currentGId = id;
         renderGroups();
         if(window.innerWidth < 1024) toggleMenu();
-        
         document.getElementById('monArea').style.display = 'block';
         document.getElementById('activeGName').innerText = id + " Monitoringi";
         document.getElementById('lessonTimeInfo').innerText = GROUPS[id].time + " | " + GROUPS[id].location;
-
         const tbody = document.getElementById('studentBody');
         const cache = liveCache[id] || {};
         const isArchivedToday = archiveDB[todayStr] && archiveDB[todayStr][id];
@@ -335,39 +301,44 @@
         if(!currentGId) return;
         if(!liveCache[currentGId]) liveCache[currentGId] = {};
         document.querySelectorAll('.st-ch').forEach(i => { liveCache[currentGId][i.dataset.name] = i.checked; });
-        localStorage.setItem('alem_live_v4', JSON.stringify(liveCache));
+        localStorage.setItem('alem_live_v6', JSON.stringify(liveCache));
     }
 
-    function archiveDay() {
-        if(!currentGId) return;
-        if(!archiveDB[todayStr]) archiveDB[todayStr] = {};
-        archiveDB[todayStr][currentGId] = {...liveCache[currentGId]};
-        localStorage.setItem('alem_archive_v4', JSON.stringify(archiveDB));
-        Swal.fire('Muvaffaqiyat!', 'Dars natijalari saqlandi.', 'success');
-        renderGroups(); renderTimeline(); updateDebtorsSidebar();
+    async function askLessonNumber() {
+        const { value: lessonNo } = await Swal.fire({
+            title: 'Dars raqami',
+            input: 'text',
+            inputPlaceholder: 'Masalan: 12-dars',
+            showCancelButton: true,
+            confirmButtonColor: '#4f46e5',
+            confirmButtonText: 'Saqlash',
+            cancelButtonText: 'Bekor qilish'
+        });
+        if (lessonNo) {
+            if(!archiveDB[todayStr]) archiveDB[todayStr] = {};
+            archiveDB[todayStr][currentGId] = { results: {...liveCache[currentGId]}, lessonNum: lessonNo };
+            localStorage.setItem('alem_archive_v6', JSON.stringify(archiveDB));
+            Swal.fire('Saqlandi!', '', 'success');
+            renderGroups(); renderTimeline(); updateDebtorsSidebar();
+        }
     }
 
     function getMissedStat(name, gid) {
         let c = 0;
-        Object.keys(archiveDB).forEach(d => { if(archiveDB[d][gid] && archiveDB[d][gid][name] === false) c++; });
+        Object.keys(archiveDB).forEach(d => { 
+            if(archiveDB[d][gid] && archiveDB[d][gid].results && archiveDB[d][gid].results[name] === false) c++; 
+        });
         return c;
     }
 
     function renderTodoSystem() {
         const manual = document.getElementById('personalTodoArea');
-        manual.innerHTML = myTodos.map((t, i) => `
-            <div class="group-card" style="border-left:5px solid var(--success); display:flex; justify-content:space-between; align-items:center; cursor:default; padding:12px 16px;">
-                <span style="${t.done?'text-decoration:line-through; opacity:0.5':''}">${t.text}</span>
-                <div style="display:flex; gap:10px; color:var(--text-muted);">
-                    <i class="fas fa-check" style="cursor:pointer" onclick="toggleT(${i})"></i>
-                    <i class="fas fa-trash" style="cursor:pointer" onclick="delT(${i})"></i>
-                </div>
-            </div>`).join('');
+        manual.innerHTML = myTodos.map((t, i) => `<div class="group-card" style="border-left:5px solid var(--success); display:flex; justify-content:space-between; align-items:center; cursor:default; padding:12px 16px;"><span style="${t.done?'text-decoration:line-through; opacity:0.5':''}">${t.text}</span><div style="display:flex; gap:10px; color:var(--text-muted);"><i class="fas fa-check" style="cursor:pointer" onclick="toggleT(${i})"></i><i class="fas fa-trash" style="cursor:pointer" onclick="delT(${i})"></i></div></div>`).join('');
     }
     function addPersonalTodo() { const inp = document.getElementById('todoInp'); if(inp.value) { myTodos.push({text: inp.value, done: false}); inp.value = ''; saveTodos(); } }
     function toggleT(i) { myTodos[i].done = !myTodos[i].done; saveTodos(); }
     function delT(i) { myTodos.splice(i, 1); saveTodos(); }
-    function saveTodos() { localStorage.setItem('alem_todos_v4', JSON.stringify(myTodos)); renderTodoSystem(); }
+    function saveTodos() { localStorage.setItem('alem_todos_v6', JSON.stringify(myTodos)); renderTodoSystem(); }
 
     function updateDebtorsSidebar() {
         const list = document.getElementById('debtorsList');
@@ -382,9 +353,7 @@
         const cont = document.getElementById('timeline');
         cont.innerHTML = Object.keys(archiveDB).sort().reverse().map(date => {
             const d = new Date(date);
-            return `<div class="date-node" onclick="openArchiveModal('${date}')">
-                <span>${d.toLocaleDateString('uz-UZ',{month:'short'})}</span><b>${d.getDate()}</b><span>${d.toLocaleDateString('uz-UZ',{weekday:'short'})}</span>
-            </div>`;
+            return `<div class="date-node" onclick="openArchiveModal('${date}')"><span>${d.toLocaleDateString('uz-UZ',{month:'short'})}</span><b>${d.getDate()}</b><span>${d.toLocaleDateString('uz-UZ',{weekday:'short'})}</span></div>`;
         }).join('');
     }
 
@@ -395,7 +364,7 @@
         let h = "";
         Object.keys(archiveDB[date]).forEach(gid => {
             h += `<div style="background:#f8fafc; padding:20px; border-radius:20px; margin-bottom:15px; display:flex; justify-content:space-between; align-items:center; border: 1px solid #ddd;">
-                <b>${gid} Guruhi</b>
+                <div><b>${gid}</b><br><small style="color:var(--primary)">${archiveDB[date][gid].lessonNum}</small></div>
                 <button class="btn" style="background:#1e293b; color:white; font-size:0.75rem;" onclick="generateAlemPDF('${date}', '${gid}')"><i class="fas fa-file-pdf"></i> PDF</button>
             </div>`;
         });
@@ -404,17 +373,44 @@
 
     function closeModal() { document.getElementById('modal').style.display = 'none'; }
 
-    // PDF ENGINE
+    // --- PDF ENGINE (MODERN & CLEAN) ---
     function generateAlemPDF(date, gid) {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
-        doc.setFillColor(79, 70, 229); doc.rect(0, 0, 210, 40, 'F');
-        doc.setTextColor(255, 255, 255); doc.setFontSize(24); doc.text("ALEM", 15, 25);
-        doc.setFontSize(10); doc.text("MONITORING HISOBOTI", 15, 33);
-        doc.text(`Sana: ${date}`, 195, 25, { align: "right" });
-        doc.setTextColor(31, 41, 55); doc.setFontSize(14); doc.text(`${gid} Guruhi`, 15, 55);
-        const data = Object.entries(archiveDB[date][gid]).map(([n, s]) => [n, s ? "Bajarilgan" : "Bajarmagan"]);
-        doc.autoTable({ startY: 65, head: [['Ism', 'Holat']], body: data, didParseCell: (d) => { if(d.section === 'body' && d.column.index === 1) d.cell.styles.textColor = d.cell.raw === 'Bajarilgan' ? [16, 185, 129] : [244, 63, 94]; } });
+        const data = archiveDB[date][gid];
+        
+        // Elegant Header
+        doc.setFillColor(79, 70, 229);
+        doc.rect(0, 0, 210, 35, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(26);
+        doc.setFont("helvetica", "bold");
+        doc.text("ALEM", 15, 22);
+        doc.setFontSize(12);
+        doc.setFont("helvetica", "normal");
+        doc.text(`Sana: ${date}`, 195, 22, { align: "right" });
+
+        // Content
+        doc.setTextColor(31, 41, 55);
+        doc.setFontSize(18);
+        doc.setFont("helvetica", "bold");
+        doc.text(`${gid} - ${data.lessonNum}`, 15, 52);
+
+        const tableData = Object.entries(data.results).map(([n, s]) => [n, s ? "Bajarilgan" : "Bajarmagan"]);
+        doc.autoTable({
+            startY: 62,
+            head: [['O\'quvchi Ismi', 'Uyga Vazifa Holati']],
+            body: tableData,
+            theme: 'grid',
+            headStyles: { fillColor: [79, 70, 229], fontStyle: 'bold' },
+            styles: { font: "helvetica", fontSize: 10 },
+            columnStyles: { 1: { halign: 'center', fontStyle: 'bold' } },
+            didParseCell: (d) => {
+                if(d.section === 'body' && d.column.index === 1) {
+                    d.cell.styles.textColor = d.cell.raw === 'Bajarilgan' ? [16, 185, 129] : [244, 63, 94];
+                }
+            }
+        });
         doc.save(`Alem_${gid}_${date}.pdf`);
     }
 
@@ -422,13 +418,15 @@
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
         let y = 20;
+        doc.setFontSize(22); doc.text("Alem: Jami Tarixiy Arxiv", 15, y); y += 15;
         Object.keys(archiveDB).sort().reverse().forEach(date => {
             if (y > 250) { doc.addPage(); y = 20; }
-            doc.setFillColor(31, 41, 55); doc.rect(15, y, 180, 10, 'F'); doc.setTextColor(255, 255, 255); doc.text(`Sana: ${date}`, 20, y + 7); y += 20;
+            doc.setFillColor(31, 41, 55); doc.rect(15, y, 180, 10, 'F'); doc.setTextColor(255, 255, 255); doc.setFontSize(11); doc.text(`Sana: ${date}`, 20, y + 7); y += 18;
             Object.keys(archiveDB[date]).forEach(gid => {
-                doc.setTextColor(79, 70, 229); doc.text(`Guruh: ${gid}`, 15, y);
-                const data = Object.entries(archiveDB[date][gid]).map(([n, s]) => [n, s ? "Bajarilgan" : "Bajarmagan"]);
-                doc.autoTable({ startY: y + 2, head: [['Ism', 'Holat']], body: data, margin: {left: 15}, didParseCell: (d) => { if(d.section === 'body' && d.column.index === 1) d.cell.styles.textColor = d.cell.raw === 'Bajarilgan' ? [16, 185, 129] : [244, 63, 94]; } });
+                const item = archiveDB[date][gid];
+                doc.setTextColor(79, 70, 229); doc.text(`Guruh: ${gid} (${item.lessonNum})`, 15, y);
+                const tableData = Object.entries(item.results).map(([n, s]) => [n, s ? "Ha" : "Yo'q"]);
+                doc.autoTable({ startY: y + 2, head: [['Ism', 'Bajardi']], body: tableData, margin: {left: 15}, didParseCell: (d) => { if(d.section === 'body' && d.column.index === 1) d.cell.styles.textColor = d.cell.raw === 'Ha' ? [16, 185, 129] : [244, 63, 94]; } });
                 y = doc.lastAutoTable.finalY + 10;
             });
         });
@@ -438,16 +436,16 @@
     function exportDebtorsPDF() {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
-        doc.setFontSize(18); doc.text("Vazifa bajarmaganlar ro'yxati (2+ marta)", 15, 20);
+        doc.setFontSize(20); doc.text("Vazifa bajarmaganlar (2+ marta)", 15, 20);
         let debtors = [];
-        Object.keys(GROUPS).forEach(gid => { GROUPS[gid].students.forEach(s => { const m = getMissedStat(s, gid); if(m >= 2) debtors.push([gid, s, m + " marta"]); }); });
+        Object.keys(GROUPS).forEach(gid => { GROUPS[gid].students.forEach(s => { const m = getMissedStat(s, gid); if(m >= 2) debtors.push([gid, s, m + " ta"]); }); });
         doc.autoTable({ startY: 30, head: [['Guruh', 'O\'quvchi', 'Soni']], body: debtors });
         doc.save("Alem_Qarzdorlar.pdf");
     }
 
     function exportExcel() {
         const data = [];
-        Object.keys(archiveDB).forEach(d => { Object.keys(archiveDB[d]).forEach(g => { Object.entries(archiveDB[d][g]).forEach(([s, st]) => { data.push({"Sana": d, "Guruh": g, "O'quvchi": s, "Holat": st ? "Bajardi" : "Bajarmadi"}); }); }); });
+        Object.keys(archiveDB).forEach(d => { Object.keys(archiveDB[d]).forEach(g => { Object.entries(archiveDB[d][g].results).forEach(([s, st]) => { data.push({"Sana": d, "Guruh": g, "Dars": archiveDB[d][g].lessonNum, "O'quvchi": s, "Holati": st ? "Bajardi" : "Bajarmadi"}); }); }); });
         const ws = XLSX.utils.json_to_sheet(data);
         const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, "Arxiv"); XLSX.writeFile(wb, "Alem_Archive.xlsx");
     }
