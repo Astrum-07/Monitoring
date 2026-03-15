@@ -1,0 +1,91 @@
+{
+  "SN9": {
+    "name": "Frontend ReactJS SN9",
+    "location": "Samarqand",
+    "time": "14:00 - 15:00",
+    "days": [1, 3, 5],
+    "students": [
+      "Daler Iskanov Jonibek o'g'li",
+      "Abbos Toshmuhammedov",
+      "Abduvali Tog'ayev Murod o'g'li",
+      "Anis Mansurov Oybekovich",
+      "Jamshid Umirov Tolmas o'g'li",
+      "Ramizjon Zokirov Umidjon o'g'li",
+      "Firdavs Abriyev",
+      "Ansor Mansurov",
+      "Oybek Shirinboyev",
+      "Shohjahon Boliqulov",
+      "Shaxruz Usmonov",
+      "Ayub Maxkamov",
+      "Lazizbek Jumanov Toshtemir o'g'li",
+      "Diyorbek Ablakulov Bobojon o'g'li",
+      "Salohiddin Qodirov",
+      "Xumoyunbek Sultonov Baxdirovich",
+      "Zafar Roziyev"
+    ]
+  },
+  "SN8": {
+    "name": "Frontend ReactJS SN8",
+    "location": "Samarqand",
+    "time": "16:00 - 18:00",
+    "days": [2, 4, 6],
+    "students": [
+      "Daler Iskanov Jonibek o'g'li",
+      "Abbos Toshmuhammedov",
+      "Abduvali Tog'ayev Murod o'g'li",
+      "Anis Mansurov Oybekovich",
+      "Jamshid Umirov Tolmas o'g'li",
+      "Ramizjon Zokirov Umidjon o'g'li",
+      "Firdavs Abriyev",
+      "Ansor Mansurov",
+      "Oybek Shirinboyev",
+      "Shohjahon Boliqulov",
+      "Shaxruz Usmonov",
+      "Ayub Maxkamov",
+      "Lazizbek Jumanov Toshtemir o'g'li",
+      "Diyorbek Ablakulov Bobojon o'g'li",
+      "Salohiddin Qodirov",
+      "Xumoyunbek Sultonov Baxdirovich",
+      "Zafar Roziyev"
+    ]
+  },
+  "N106": {
+    "name": "Frontend ReactJS N106",
+    "location": "Chilonzor",
+    "time": "17:00 - 18:00",
+    "days": [1, 3, 5],
+    "students": [
+      "Salmon Dilmatov",
+      "Boburmirzo Mamajonov",
+      "Bobur Saydullayev",
+      "Og'abek Avazov Qurg'on o'g'li",
+      "Asror Axmadov",
+      "Do'stmuhammad Shoxo'jayev",
+      "O'tkirbek Qalandarov",
+      "Muhammadyusuf Abdurashidov",
+      "Xusniddin Ulashev"
+    ]
+  },
+  "SN6": {
+    "name": "Frontend ReactJS SN6",
+    "location": "Samarqand",
+    "time": "16:00 - 18:00",
+    "days": [1, 3, 5],
+    "students": [
+      "Foziljon G'ulomiddinov",
+      "Jonibek Axmatjonov",
+      "Temur Nurmurodov",
+      "Azizjon Ravshanov Anvarovich",
+      "Sherzod Yusupov Qurbonboy o'g'li",
+      "Jamoliddin Melikov Jamshedovich",
+      "Temur Razzoqov Hakimjonovich",
+      "Dilshod No'monov",
+      "Muhammadali Komiljonov",
+      "Begzod Usmonov",
+      "Azimjon Fayzilloyev G'aybilloyevich",
+      "Amir Shukrullayev Shuhratovich",
+      "Bobur Yuldoshev",
+      "Adhamjon Mansurov Zafar og'li"
+    ]
+  }
+}
